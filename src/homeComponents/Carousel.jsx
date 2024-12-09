@@ -53,7 +53,7 @@ const Carousel = () => {
       >
         <div
           className={`carousel-text ${isAnimating ? "slide-up" : ""}`}
-          key={currentSlide} // Re-renders the component for animation
+          key={currentSlide} 
         >
           <h1>{slides[currentSlide].text}</h1>
           <p>{slides[currentSlide].p}</p>

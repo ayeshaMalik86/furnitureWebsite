@@ -25,8 +25,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 14px;
+  font-size: 1rem;
   text-align: center;
+  cursor: pointer;
+}
+
+.category-item:hover{
+  font-size: 1.1rem;
+  color: #ffc107;
 }
 
 .icon {
@@ -42,7 +48,7 @@
   }
 
   .category-item {
-    font-size: 12px; 
+    font-size: 1rem; 
   }
 
   .icon {
