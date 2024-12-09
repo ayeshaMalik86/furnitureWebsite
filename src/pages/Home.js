@@ -1,12 +1,16 @@
 import React from "react";
 import HeroSection from "../homeComponents/HeroSection";
+import Categories from "../homeComponents/Categories";
+import Carousel from "../homeComponents/Carousel";
 
 
 const HomePage = () => {
   return (
     <main>
       <HeroSection />
-      <HeroSection />
+      <Categories/>
+      <Carousel/>
+
     </main>
   );
 };

@@ -6,9 +6,9 @@
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     position: fixed;
-    background: #33333324;
+    width: 100%;
     z-index: 10;
-    width: 97%;
+    background: #ffffff16;
   }
   
   .navbar-logo {
@@ -29,7 +29,7 @@
   
   .logo-text {
     font-weight: bold;
-    color: #ffffff;
+    color: #ececec;
     font-size: 1.5rem;
     letter-spacing: 5px;
   }
@@ -38,6 +38,7 @@
     display: flex;
     list-style: none;
     gap: 20px;
+    flex-wrap: wrap;
   }
   
   .navbar-links li a {
@@ -48,7 +49,9 @@
   }
   
   .navbar-links li a:hover {
-    color: #ffcc00;
+    background: #ffcc00;
+    padding: 0.5rem;
+    border-radius: 4px;
   }
   
   .navbar-actions {
