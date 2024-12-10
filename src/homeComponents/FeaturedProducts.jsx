@@ -71,6 +71,7 @@ const FeaturedProducts = () => {
             →
         </button>
       </div>
+      <button className="view-more">View More →</button>
     </div>
   );
 };
