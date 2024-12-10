@@ -108,8 +108,7 @@
   .newsletter-form button:hover {
     background-color: #e0a800;
   }
-  
-  /* Responsive Design */
+
   @media (max-width: 768px) {
     .footer-section {
       text-align: left;
