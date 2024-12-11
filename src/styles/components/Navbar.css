@@ -5,10 +5,10 @@
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    position: fixed;
-    width: 100%;
+    /*position:fixed*/
+    /*width: 100%;*/
     z-index: 10;
-    background: #ffffff16;
+    background: #000000;
   }
   
   .navbar-logo {

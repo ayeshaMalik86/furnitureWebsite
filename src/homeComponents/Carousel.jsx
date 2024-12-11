@@ -34,7 +34,7 @@ const Carousel = () => {
     setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
       setIsAnimating(false);
-    }, 800); // Match animation duration
+    }, 800); 
   };
 
   const handlePrev = () => {
@@ -42,7 +42,7 @@ const Carousel = () => {
     setTimeout(() => {
       setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
       setIsAnimating(false);
-    }, 800); // Match animation duration
+    }, 800); 
   };
 
   return (

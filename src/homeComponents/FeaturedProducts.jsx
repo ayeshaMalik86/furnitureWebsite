@@ -45,11 +45,11 @@ const FeaturedProducts = () => {
         <button className="carousel-control prev" onClick={prevSlide}>
           ←
         </button>
-        <div className="product-list">
+        <div className="featured-product-list">
           {visibleItems.map((product, i) => (
-            <div key={product.id + "-" + i} className="product-card">
+            <div key={product.id + "-" + i} className="featured-product-card">
               {product.label && <span className={`label ${product.label.toLowerCase()}`}>{product.label}</span>}
-              <img src={product.imgSrc} alt="Product" className="product-image" />
+              <img src={product.imgSrc} alt="Product" className="featured-product-image" />
               <h3 className="product-name">{product.title}</h3>
               <p className="product-tag">{product.tag}</p>
               <p className="product-price">{product.price}</p>

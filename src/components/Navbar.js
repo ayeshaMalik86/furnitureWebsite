@@ -17,7 +17,7 @@ const Navbar = () => {
         <span className="logo-icon">A</span>
         <span className="logo-text">AYESHA.M</span>
         <ul className={`navbar-links ${drawerOpen ? 'open' : ''}`}>
-        <li><a href="/store">Store</a></li>
+        <li><a href="/shop">Shop</a></li>
         <li><a href="/office">Office</a></li>
         <li><a href="/home-office">Home Office</a></li>
       </ul>
