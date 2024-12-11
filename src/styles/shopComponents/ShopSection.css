@@ -24,10 +24,12 @@
     font-size: 0.9rem;
     color: rgb(255, 255, 255);
     margin-bottom: 20px;
+    cursor: pointer;
   }
   .shop-hero span{
     color: #ffcc00;
   }
+
 
   .category-banner{
     display: flex;
