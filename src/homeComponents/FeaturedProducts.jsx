@@ -9,14 +9,6 @@ const FeaturedProducts = () => {
     { id: 3, status: "New", image: "/assets/images/office-chair.jpg", price: 89.70, tag: "Furniture", name:"Office Chair" },
     { id: 4, status: "Sale", image: "/assets/images/wooden-desk.jpg", price: 40.50, tag: "Furniture", name:"Wooden desk" },
   ];
-
-  const productsData = [
-    { id: 1, name: "Abstract Table", tag: "Furniture", price: 70, status: "Out of Stock", image: "/assets/images/abstract-table.jpg", discount: null },
-    { id: 2, name: "Coffee Table", tag: "Furniture", price: 70, status: null, image: "/assets/images/coffee-table.jpg", discount: "18% OFF" },
-    { id: 3, name: "Daily Chair", tag: "Furniture", price: 140, status: null, image: "/assets/images/daily-chair.jpg", discount: null },
-    { id: 4, name: "Modern Chair", tag: "Furniture", price: 80, status: null, image: "/assets/images/modern-chair.jpg", discount: "20% OFF" },
-  ];
-
   const [index, setIndex] = useState(0);
   const navigate = useNavigate(); 
 
