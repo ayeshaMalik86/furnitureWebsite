@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import "../styles/homeComponents/FeaturedProducts.css";
 
 const FeaturedProducts = () => {
   const products = [
-    { id: 1, label: "", imgSrc: "assets/images/black-image.jpg", price: "$45", tag: "Furniture", title:"Black Chair" },
-    { id: 2, label: "New", imgSrc: "assets/images/monitor-stand.jpg", price: "$56.20", tag: "Furniture", title:"Monitor Stand" },
-    { id: 3, label: "New", imgSrc: "assets/images/office-chair.jpg", price: "$89.70", tag: "Furniture", title:"Office Chair" },
-    { id: 4, label: "Sale", imgSrc: "assets/images/wooden-desk.jpg", price: "$40.50", tag: "Furniture", title:"Wooden desk" },
+    { id: 1, status: "", image: "/assets/images/black-image.jpg", price: 45, tag: "Furniture", name:"Black Chair" },
+    { id: 2, status: "New", image: "/assets/images/monitor-stand.jpg", price: 56.20, tag: "Furniture", name:"Monitor Stand" },
+    { id: 3, status: "New", image: "/assets/images/office-chair.jpg", price: 89.70, tag: "Furniture", name:"Office Chair" },
+    { id: 4, status: "Sale", image: "/assets/images/wooden-desk.jpg", price: 40.50, tag: "Furniture", name:"Wooden desk" },
+  ];
+
+  const productsData = [
+    { id: 1, name: "Abstract Table", tag: "Furniture", price: 70, status: "Out of Stock", image: "/assets/images/abstract-table.jpg", discount: null },
+    { id: 2, name: "Coffee Table", tag: "Furniture", price: 70, status: null, image: "/assets/images/coffee-table.jpg", discount: "18% OFF" },
+    { id: 3, name: "Daily Chair", tag: "Furniture", price: 140, status: null, image: "/assets/images/daily-chair.jpg", discount: null },
+    { id: 4, name: "Modern Chair", tag: "Furniture", price: 80, status: null, image: "/assets/images/modern-chair.jpg", discount: "20% OFF" },
   ];
 
   const [index, setIndex] = useState(0);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate(); 
 
   const nextSlide = () => {
     setIndex((prevIndex) => (prevIndex + 1) % products.length);
+  };
+
+  const handleViewProduct = (product) => {
+    navigate(`/product/${product.id}`, { state: { product } });
   };
 
   const prevSlide = () => {
@@ -54,19 +65,19 @@ const FeaturedProducts = () => {
         <div className="featured-product-list">
           {visibleItems.map((product, i) => (
             <div key={product.id + "-" + i} className="featured-product-card">
-              {product.label && <span className={`label ${product.label.toLowerCase()}`}>{product.label}</span>}
-              <img src={product.imgSrc} alt="Product" className="featured-product-image" />
-              <h3 className="product-name">{product.title}</h3>
+              {product.status && <span className={`status ${product.status.toLowerCase()}`}>{product.status}</span>}
+              <img src={product.image} alt="Product" className="featured-product-image" />
+              <h3 className="product-name">{product.name}</h3>
               <p className="product-tag">{product.tag}</p>
-              <p className="product-price">{product.price}</p>
+              <p className="product-price">${product.price}</p>
               <div className="product-rating">★★★★★</div>
               <div className="buy-icons">
                 <p className="cart-text">
                   <img src="/assets/icons/add-cart.png" alt="cart" />
                   Add to cart
                 </p>
-                <p className="cart-text">
-                  <img src="/assets/icons/view-product.png" alt="cart" />
+                <p className="cart-text" onClick={() => handleViewProduct(product)}>
+                  <img src="/assets/icons/view-product.png" alt="view" />
                   View Product
                 </p>
               </div>

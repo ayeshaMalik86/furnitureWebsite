@@ -39,6 +39,10 @@
     flex-wrap: wrap;
   }
 
+  .category-banner .product-length{
+    color: #565555;
+  }
+
   .sort-menu select{
     padding: 0.5rem 1rem;
     color: #646464;

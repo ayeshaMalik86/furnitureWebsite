@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "../styles/shopComponents/ShopSection.css";
 
 const productsData = [
@@ -13,6 +14,7 @@ const productsData = [
 const ShopSection = () => {
   const [products, setProducts] = useState(productsData);
   const [sortOption, setSortOption] = useState("");
+  const navigate = useNavigate();
 
   const handleSort = (e) => {
     const option = e.target.value;
@@ -20,7 +22,6 @@ const ShopSection = () => {
 
     let sortedProducts = [...products];
     if (option === "popularity") {
-      // Placeholder: Replace with actual popularity logic
       sortedProducts = sortedProducts.reverse();
     } else if (option === "price-low-high") {
       sortedProducts.sort((a, b) => a.price - b.price);
@@ -30,21 +31,18 @@ const ShopSection = () => {
     setProducts(sortedProducts);
   };
 
+  const handleViewProduct = (product) => {
+    navigate(`/product/${product.id}`, { state: { product } });
+  };
+
   return (
     <div className="shop">
-      <div
-        className="shop-hero"
-        style={{
-          backgroundImage: "url('/assets/images/shop-hero.jpg')",
-        }}
-      >
+      <div className="shop-hero" style={{ backgroundImage: "url('/assets/images/shop-hero.jpg')" }}>
         <h1>Shop</h1>
-        <p>
-          HOME / <span>SHOP</span>
-        </p>
+        <p>HOME / <span>SHOP</span></p>
       </div>
       <div className="category-banner">
-        <p>Displaying all {products.length} products</p>
+        <p className="product-length">Displaying all {products.length} products</p>
         <div className="sort-menu">
           <select id="sort" value={sortOption} onChange={handleSort}>
             <option value="">Default sorting</option>
@@ -70,8 +68,8 @@ const ShopSection = () => {
                   <img src="/assets/icons/add-cart.png" alt="cart" />
                   Add to cart
                 </p>
-                <p className="cart-text">
-                  <img src="/assets/icons/view-product.png" alt="cart" />
+                <p className="cart-text" onClick={() => handleViewProduct(product)}>
+                  <img src="/assets/icons/view-product.png" alt="view" />
                   View Product
                 </p>
               </div>

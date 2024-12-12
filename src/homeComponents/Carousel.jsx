@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../styles/homeComponents/Carousel.css";
+import { useNavigate } from "react-router-dom"; 
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate(); 
 
   const slides = [
     {
@@ -45,6 +47,10 @@ const Carousel = () => {
     }, 800); 
   };
 
+  const handleViewMoreClick = () => {
+    navigate("/shop"); 
+  };
+
   return (
     <div className="carousel">
       <div
@@ -57,7 +63,7 @@ const Carousel = () => {
         >
           <h1>{slides[currentSlide].text}</h1>
           <p>{slides[currentSlide].p}</p>
-          <button className="shop-now">Shop Now</button>
+          <button className="shop-now" onClick={handleViewMoreClick}>Shop Now</button>
         </div>
       </div>
       <button className="prev" onClick={handlePrev}>
