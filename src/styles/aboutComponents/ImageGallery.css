@@ -58,7 +58,8 @@
   
   @media (max-width: 768px) {
     .image-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
+      padding: 1rem;
     }
   
     .quote {
@@ -68,5 +69,10 @@
     .author-info {
       font-size: 12px;
     }
+
+    .grid-image {
+        height: 250px;
+        max-width: 350px;
+      }
   }
   
