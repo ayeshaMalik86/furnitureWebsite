@@ -31,7 +31,6 @@ const Navbar = () => {
         <li><a href="/contact">Contact</a></li>
       </ul>
 
-      {/* Navbar Actions (Search, Cart, User Icon) */}
       <div className="navbar-actions">
         <input type="text" placeholder="Search products ..." className="navbar-search" />
         <div className="icon-basket">

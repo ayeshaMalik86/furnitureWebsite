@@ -14,8 +14,8 @@ const HeroSection = () => {
         backgroundImage: "url('/assets/images/home_hero_bg.jpg')",
       }}>
       <div className="hero-content">
-        <p>Home Office furniture</p>
-        <h1>Stay productive and get more work done!</h1>
+        <p>Best Furniture in Town</p>
+        <h1>Live the comfiest life you deserve with our furniture</h1>
         <button className="shop-button" onClick={handleShopButtonClick}>
           Shop Collection →
         </button>

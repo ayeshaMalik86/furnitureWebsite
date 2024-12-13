@@ -139,5 +139,9 @@
     .navbar-actions {
       display: none;
     }
+
+    .navbar-search{
+      display: block;
+    }
   }
   

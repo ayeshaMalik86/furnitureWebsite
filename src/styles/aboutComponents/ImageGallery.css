@@ -1,0 +1,72 @@
+/* General Styles */
+.image-gallery {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .quote-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .quote {
+    font-size: 18px;
+    font-style: italic;
+    color: #4a4a4a;
+    margin-bottom: 3rem;
+    width: 40%;
+  }
+
+  .quote-img{
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  
+  .author {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .author-image {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .author-info {
+    font-size: 14px;
+    color: #7a7a7a;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 3rem;
+  }
+  
+  .grid-image {
+    width: 100%;
+    max-width: 350px;
+    height: 450px;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .image-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .quote {
+      font-size: 16px;
+    }
+  
+    .author-info {
+      font-size: 12px;
+    }
+  }
+  
