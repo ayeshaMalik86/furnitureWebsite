@@ -9,14 +9,29 @@
     position: relative;
     padding: 2rem;
   }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-40px);
+    }
+  }
   
   .hero-content {
     text-align: left;
     color: white;
     max-width: 800px;
     z-index: 1;
+    animation: float 3s ease-in-out infinite;
   }
   
+  .hero h1, 
+  .hero p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+
   .hero h1 {
     font-size: 4rem;
     line-height: 1.2;

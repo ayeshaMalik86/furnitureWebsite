@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/homeComponents/Carousel.css";
 import { useNavigate } from "react-router-dom"; 
 
@@ -50,6 +50,15 @@ const Carousel = () => {
   const handleViewMoreClick = () => {
     navigate("/shop"); 
   };
+
+  // Automatic slide change
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext(); 
+    }, 4000); // Change every 4 seconds
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
 
   return (
     <div className="carousel">
