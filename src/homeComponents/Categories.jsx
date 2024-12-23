@@ -11,20 +11,18 @@ const Categories = () => {
           const items = entry.target.querySelectorAll(".category-item");
 
           if (entry.isIntersecting) {
-            // Add animation class when in view
             items.forEach((item, index) => {
-              item.style.animationDelay = `${index * 0.1}s`; // Staggered delay
+              item.style.animationDelay = `${index * 0.1}s`; 
               item.classList.add("fly-in");
             });
           } else {
-            // Remove animation class when out of view
             items.forEach((item) => {
               item.classList.remove("fly-in");
             });
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.2 } 
     );
 
     if (categoriesRef.current) {

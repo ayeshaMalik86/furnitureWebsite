@@ -65,10 +65,28 @@
     border-radius: 8px;
     padding: 10px;
     text-align: center;
-    position: relative; 
+    position: relative;
     cursor: pointer;
     max-width: 300px;
     transition: transform 0.3s ease;
+    opacity: 0;
+  }
+
+  @keyframes flyInFromBelow {
+    from {
+      opacity: 0;
+      transform: translateY(110px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+  .product-card.fly-in {
+    animation: flyInFromBelow 0.8s ease forwards;
+    opacity: 1;
   }
   
   .product-card:hover {

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/pages/ShopSection.css";
 
 const productsData = [
@@ -15,6 +15,31 @@ const ShopSection = () => {
   const [products, setProducts] = useState(productsData);
   const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const cards = document.querySelectorAll(".product-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+
+            // Remove the animation class (if it exists) to reapply it
+            card.classList.remove("fly-in");
+
+            // Trigger a reflow to ensure the animation re-runs
+            void card.offsetWidth;
+            card.classList.add("fly-in");
+          }
+        });
+      },
+      { threshold: 0.1}
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect(); 
+  }, []);
 
   const handleSort = (e) => {
     const option = e.target.value;

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import '../styles/components/Footer.css';
 
 const Footer = () => {
@@ -8,6 +8,31 @@ const Footer = () => {
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
+
+  useEffect(() => {
+    const features = document.querySelectorAll('.footer-feature');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const feature = entry.target;
+            feature.classList.remove('animate');
+            void feature.offsetWidth;
+            feature.classList.add('animate');
+          }
+        });
+      },
+      { threshold: 0.5 } 
+    );
+
+    features.forEach((feature) => observer.observe(feature));
+
+    return () => {
+      features.forEach((feature) => observer.unobserve(feature));
+    };
+  }, []);
+ 
 
   return (
     <footer className="footer">

@@ -5,6 +5,9 @@ import "../styles/homeComponents/FeaturedProducts.css";
 const FeaturedProducts = () => {
   const [isInView, setIsInView] = useState(false);
   const featuredRef = useRef(null);
+  const carouselRef = useRef(null);
+  const navigate = useNavigate();
+
   const products = [
     { id: 1, status: "", image: "/assets/images/black-image.jpg", price: 45, tag: "Furniture", name: "Black Chair" },
     { id: 2, status: "New", image: "/assets/images/monitor-stand.jpg", price: 56.2, tag: "Furniture", name: "Monitor Stand" },
@@ -12,13 +15,10 @@ const FeaturedProducts = () => {
     { id: 4, status: "Sale", image: "/assets/images/wooden-desk.jpg", price: 40.5, tag: "Furniture", name: "Wooden Desk" },
   ];
 
-  const [index, setIndex] = useState(0);
-  const navigate = useNavigate();
-
+  // Observe the visibility of the section
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Trigger the animation when the section enters the viewport
         if (entry.isIntersecting) {
           setIsInView(true);
         } else {
@@ -39,31 +39,31 @@ const FeaturedProducts = () => {
     };
   }, []);
 
-  const nextSlide = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % products.length);
-  };
+  // Continuous scrolling effect
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    let animationId;
 
-  const prevSlide = () => {
-    setIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
-  };
+    const startScrolling = () => {
+      const scrollSpeed = 1; // Adjust for desired speed
+      const step = () => {
+        carousel.scrollLeft += scrollSpeed;
+        if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+          carousel.scrollLeft = 0;
+        }
+        animationId = requestAnimationFrame(step);
+      };
+      animationId = requestAnimationFrame(step);
+    };
+
+    startScrolling();
+
+    return () => cancelAnimationFrame(animationId);
+  }, []);
 
   const handleViewProduct = (product) => {
     navigate(`/product/${product.id}`, { state: { product } });
   };
-
-  const getVisibleProducts = () => {
-    const windowWidth = window.innerWidth;
-    if (windowWidth < 768) return 1;
-    if (windowWidth < 1024) return 2;
-    return 4;
-  };
-
-  const visibleProducts = getVisibleProducts();
-
-  const visibleItems = [
-    ...products.slice(index, index + visibleProducts),
-    ...products.slice(0, Math.max(0, index + visibleProducts - products.length)),
-  ];
 
   const handleViewMoreClick = () => {
     navigate("/shop");
@@ -71,15 +71,10 @@ const FeaturedProducts = () => {
 
   return (
     <div ref={featuredRef} className="featured-products">
-      <h2 className={`featured-title ${isInView ? "animate-squiggly" : ""}`}>
-        Featured Products
-      </h2>
-      <div className="product-carousel">
-        <button className="carousel-control prev" onClick={prevSlide}>
-          ←
-        </button>
+      <h2 className={`featured-title ${isInView ? "animate-squiggly" : ""}`}>Featured Products</h2>
+      <div ref={carouselRef} className="product-carousel">
         <div className="featured-product-list">
-          {visibleItems.map((product, i) => (
+          {[...products, ...products].map((product, i) => (
             <div key={product.id + "-" + i} className="featured-product-card">
               {product.status && (
                 <span className={`status ${product.status.toLowerCase()}`}>{product.status}</span>
@@ -102,9 +97,6 @@ const FeaturedProducts = () => {
             </div>
           ))}
         </div>
-        <button className="carousel-control next" onClick={nextSlide}>
-          →
-        </button>
       </div>
       <button className="view-more" onClick={handleViewMoreClick}>
         View More →
