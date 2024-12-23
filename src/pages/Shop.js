@@ -23,11 +23,7 @@ const ShopSection = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const card = entry.target;
-
-            // Remove the animation class (if it exists) to reapply it
             card.classList.remove("fly-in");
-
-            // Trigger a reflow to ensure the animation re-runs
             void card.offsetWidth;
             card.classList.add("fly-in");
           }

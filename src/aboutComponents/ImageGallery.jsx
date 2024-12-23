@@ -1,7 +1,29 @@
 import React from 'react';
+import { useEffect } from 'react';
 import "../styles/aboutComponents/ImageGallery.css"
 
 const ImageGallery = () => {
+   useEffect(() => {
+      const images = document.querySelectorAll(".grid-image");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const image = entry.target;
+              image.classList.remove("fly-in");
+              void image.offsetWidth;
+              image.classList.add("fly-in");
+            }
+          });
+        },
+        { threshold: 0.1}
+      );
+  
+      images.forEach((image) => observer.observe(image));
+  
+      return () => observer.disconnect(); 
+    }, []);
+
   return (
     <div className="image-gallery">
       <div className="quote-section">

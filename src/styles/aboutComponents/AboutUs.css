@@ -29,6 +29,18 @@
     width: 50%;
   }
 
+  .about-us__story {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .about-us__story.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+
   
   .about-us__story {
     padding: 3rem 2rem;

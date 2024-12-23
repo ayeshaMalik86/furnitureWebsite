@@ -6,12 +6,22 @@
     display: flex;
     flex-direction: column;
   }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
   
   .quote-section {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: float 3s ease-in-out infinite;
   }
   
   .quote {
@@ -49,6 +59,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     padding: 3rem;
+  }
+
+  @keyframes flyInFromBelow {
+    from {
+      opacity: 0;
+      transform: translateY(110px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .grid-image.fly-in {
+    animation: flyInFromBelow 0.8s ease forwards;
+    opacity: 1;
   }
   
   .grid-image {

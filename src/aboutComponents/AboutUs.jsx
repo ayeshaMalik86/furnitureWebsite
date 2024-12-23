@@ -1,15 +1,46 @@
-import React from "react";
-import "../styles/aboutComponents/AboutUs.css"
+import React, { useEffect } from "react";
+import "../styles/aboutComponents/AboutUs.css";
 
 const AboutUs = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          } else {
+            entry.target.classList.remove("fade-in"); // Reset animation state
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const target = document.querySelector(".about-us__story");
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
+
   return (
     <section className="about-us">
-      <div className="about-header" style={{
-        backgroundImage: "url('/assets/images/about-bg.jpg')",
-      }}>
+      <div
+        className="about-header"
+        style={{
+          backgroundImage: "url('/assets/images/about-bg.jpg')",
+        }}
+      >
         <h1>ABOUT US</h1>
-        <p>Porta tellus suscipit eget arcu eu nec quis scelerisque nam vitae,
-        turpis integer iaculis tristique vivamus mattis egestas.</p>
+        <p>
+          Porta tellus suscipit eget arcu eu nec quis scelerisque nam vitae,
+          turpis integer iaculis tristique vivamus mattis egestas.
+        </p>
       </div>
       <div className="about-us__story">
         <h2 className="about-us__story-heading">Our Story</h2>
